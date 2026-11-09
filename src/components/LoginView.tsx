@@ -60,7 +60,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
         </div>
       </div>
 
-      {/* Login Box Right Section */}
+  
       <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-16 bg-slate-50/50">
         <div className="w-full max-w-md mx-auto">
           <div className="mb-8">
