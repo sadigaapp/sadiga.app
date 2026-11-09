@@ -40,15 +40,15 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full blur-2xl -ml-16 -mb-16 pointer-events-none" />
 
-        {/* Dummy top spacer agar judul benar-benar di tengah */}
+        {/* Top Spacer */}
         <div className="hidden md:block"></div>
 
-        {/* Brand Container - Di Tengah Pas & Besar */}
-        <div className="relative z-10 text-center my-auto py-10">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider text-white drop-shadow-md">
+        {/* Brand Container - Rata Kiri Sejajar & Spasi Huruf Alami */}
+        <div className="relative z-10 text-left my-auto py-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-normal text-white drop-shadow-sm">
             SADIGA
           </h1>
-          <p className="mt-3 md:mt-5 text-base md:text-xl lg:text-2xl text-emerald-100/90 font-medium tracking-wide max-w-xl mx-auto">
+          <p className="mt-2 md:mt-4 text-base md:text-xl lg:text-2xl text-emerald-100/90 font-normal tracking-normal max-w-2xl">
             Sistem Administrasi Digital Granada
           </p>
         </div>
