@@ -35,7 +35,7 @@ interface MenuDef {
   label: string;
   icon: any;
   group: 'Akademik' | 'Kesiswaan' | 'Rapor' | 'Santri' | 'Data Induk';
-  roles?: string[]; // if specified, only these roles/perans have access
+  musyrifOnly?: boolean;
   adminOnly?: boolean;
   waliOnly?: boolean;
 }
@@ -52,7 +52,7 @@ const MENU_ITEMS: MenuDef[] = [
   // Kesiswaan
   { key: 'Perilaku', label: 'Log Perilaku', icon: ShieldCheck, group: 'Kesiswaan' },
   { key: 'Mutabaah', label: "Mutaba'ah Yaumiyah", icon: CheckSquare, group: 'Kesiswaan' },
-  { key: 'Piket', label: 'Piket Musyrif', icon: BedDouble, group: 'Kesiswaan' },
+  { key: 'Piket', label: 'Piket Musyrif', icon: BedDouble, group: 'Kesiswaan', musyrifOnly: true },
   { key: 'Setoran', label: 'Tahsin & Tahfizh', icon: BookMarked, group: 'Kesiswaan' },
   { key: 'Ekskul', label: 'Penilaian Ekskul', icon: Award, group: 'Kesiswaan' },
 
@@ -99,9 +99,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
     setCollapsedGroups(prev => ({ ...prev, [grp]: !prev[grp] }));
   };
 
-  const isAdmin = user.peran.includes('admin');
-  const isKepsek = user.peran.includes('kepsek');
-  const isGuru = user.peran.includes('guru') || isKepsek; // Kepsek otomatis punya hak akses seperti guru
+  const userRoles = Array.isArray(user.peran) ? user.peran : [user.role];
+  const isAdmin = userRoles.includes('admin');
+  const isMudir = userRoles.includes('mudir');
+  const isKepsek = userRoles.includes('kepsek');
+  const isMusyrif = userRoles.includes('musyrif');
   const isWali = (user.wali || []).length > 0;
   const isSantri = user.role === 'santri';
 
@@ -110,16 +112,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
       return item.group === 'Santri';
     }
     if (item.group === 'Santri') {
-      return false; // Staf tak perlu menu khusus santri
+      return false;
     }
+    // Khusus menu Piket Musyrif hanya untuk Musyrif, Admin, dan Mudir
+    if (item.musyrifOnly) {
+      return isMusyrif || isAdmin || isMudir;
+    }
+    // Menu Data Induk dapat dilihat oleh Admin dan Mudir
     if (item.adminOnly) {
-      return isAdmin;
+      return isAdmin || isMudir;
     }
     if (item.waliOnly) {
-      return isAdmin || isWali;
+      return isAdmin || isMudir || isWali;
     }
     if (item.key === 'Rapor' || item.key === 'RaporPondok') {
-      return isAdmin || isKepsek || isWali;
+      return isAdmin || isMudir || isKepsek || isWali;
     }
     return true;
   };
