@@ -32,11 +32,6 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
     }
   };
 
-  const handleQuickLogin = (u: string, p: string) => {
-    setUsername(u);
-    setPassword(p);
-  };
-
   return (
     <div className="min-h-screen flex flex-col md:grid md:grid-cols-12 bg-white text-slate-800 font-sans">
       {/* Hero Left Section */}
@@ -46,21 +41,19 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full blur-2xl -ml-16 -mb-16 pointer-events-none" />
 
         <div className="relative z-10">
-            <div>
-              <span className="text-xl font-extrabold tracking-wider">SADIGA</span>
-              <span className="block text-xs text-emerald-200/80 font-medium">Sistem Administrasi Digital Granada</span>
-            </div>
+          <div>
+            <span className="text-xl font-extrabold tracking-wider">SADIGA</span>
+            <span className="block text-xs text-emerald-200/80 font-medium">Sistem Administrasi Digital Granada</span>
           </div>
         </div>
 
-        
-        <div className="relative z-10 text-xs text-emerald-200/60 flex items-center justify-between">
+        <div className="relative z-10 text-xs text-emerald-200/60 flex items-center justify-between mt-10 md:mt-0">
           <span>&copy; {new Date().getFullYear()} Granada 2 Islamic Heritage School</span>
           <span className="font-mono"> SADIGA v.2.0 </span>
         </div>
       </div>
 
-  
+      {/* Login Box Right Section */}
       <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-16 bg-slate-50/50">
         <div className="w-full max-w-md mx-auto">
           <div className="mb-8">
@@ -122,7 +115,6 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
               {loading ? 'Memverifikasi...' : 'Masuk ke Sistem'}
             </button>
           </form>
-
         </div>
       </div>
     </div>
