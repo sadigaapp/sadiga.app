@@ -78,7 +78,10 @@ export const GenericTableView: React.FC<GenericTableViewProps> = ({
     setFSampai('');
   }, [mod]);
 
-  const kelasList = [...new Set(allSiswa.map(s => s.kelas).filter(Boolean))].sort();
+const kelasListFromSiswa = allSiswa.map(s => s.kelas).filter(Boolean);
+const kelasListFromMaster = allKelas.map(k => k.nama).filter(Boolean);
+
+const kelasList = [...new Set([...kelasListFromMaster, ...kelasListFromSiswa])].sort();
 
   // Column definitions per module
   const getColumns = (): { key: string; label: string; type?: string }[] => {
