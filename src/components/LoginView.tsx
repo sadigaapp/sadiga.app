@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../lib/storage';
 import { UserSession } from '../types';
-import { Shield, BookOpen, User, CheckCircle2, AlertCircle, KeyRound, Sparkles } from 'lucide-react';
+import { User, AlertCircle, KeyRound } from 'lucide-react';
 
 interface LoginViewProps {
   onSuccess: (user: UserSession) => void;
@@ -35,21 +35,28 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSuccess }) => {
   return (
     <div className="min-h-screen flex flex-col md:grid md:grid-cols-12 bg-white text-slate-800 font-sans">
       {/* Hero Left Section */}
-      <div className="md:col-span-6 lg:col-span-7 bg-[#1B5558] text-white p-8 md:p-14 lg:p-20 flex flex-col justify-between relative overflow-hidden">
-        {/* Decorative background Islamic geometry / circles */}
+      <div className="md:col-span-6 lg:col-span-7 bg-[#1B5558] text-white p-8 md:p-14 lg:p-20 flex flex-col justify-between relative overflow-hidden min-h-[350px] md:min-h-screen">
+        {/* Decorative background circles */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full blur-2xl -ml-16 -mb-16 pointer-events-none" />
 
-        <div className="relative z-10">
-          <div>
-            <span className="text-xl font-extrabold tracking-wider">SADIGA</span>
-            <span className="block text-xs text-emerald-200/80 font-medium">Sistem Administrasi Digital Granada</span>
-          </div>
+        {/* Dummy top spacer agar judul benar-benar di tengah */}
+        <div className="hidden md:block"></div>
+
+        {/* Brand Container - Di Tengah Pas & Besar */}
+        <div className="relative z-10 text-center my-auto py-10">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider text-white drop-shadow-md">
+            SADIGA
+          </h1>
+          <p className="mt-3 md:mt-5 text-base md:text-xl lg:text-2xl text-emerald-100/90 font-medium tracking-wide max-w-xl mx-auto">
+            Sistem Administrasi Digital Granada
+          </p>
         </div>
 
-        <div className="relative z-10 text-xs text-emerald-200/60 flex items-center justify-between mt-10 md:mt-0">
+        {/* Footer info di bawah */}
+        <div className="relative z-10 text-xs text-emerald-200/60 flex items-center justify-between">
           <span>&copy; {new Date().getFullYear()} Granada 2 Islamic Heritage School</span>
-          <span className="font-mono"> SADIGA v.2.0 </span>
+          <span className="font-mono">SADIGA v.2.0</span>
         </div>
       </div>
 
