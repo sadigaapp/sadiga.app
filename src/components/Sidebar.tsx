@@ -149,15 +149,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         }`}
       >
         {/* Brand Header */}
-        <div className="p-5 border-b border-emerald-800/60 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-emerald-400/20 text-emerald-200 flex items-center justify-center font-bold text-lg border border-emerald-300/30">
-              S
-            </div>
-            <div>
-              <div className="font-extrabold text-base tracking-wider text-white">SADIGA</div>
-              <div className="text-[11px] text-emerald-200/80 -mt-0.5">Granada Islamic School</div>
-            </div>
+        <div className="p-5 border-b border-emerald-800/60">
+          <div className="font-extrabold text-lg tracking-wider text-white">SADIGA</div>
+          <div className="text-[11px] text-emerald-200/80 font-medium leading-tight mt-0.5">
+            Sistem Administrasi Digital Granada
           </div>
         </div>
 
