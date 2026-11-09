@@ -101,6 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const isAdmin = user.peran.includes('admin');
   const isKepsek = user.peran.includes('kepsek');
+  const isGuru = user.peran.includes('guru') || isKepsek; // Kepsek otomatis punya hak akses seperti guru
   const isWali = (user.wali || []).length > 0;
   const isSantri = user.role === 'santri';
 
@@ -109,7 +110,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       return item.group === 'Santri';
     }
     if (item.group === 'Santri') {
-      return false; // Staf don't view own santri dashboard unless logged in as santri
+      return false; // Staf tak perlu menu khusus santri
     }
     if (item.adminOnly) {
       return isAdmin;
