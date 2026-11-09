@@ -1,0 +1,6 @@
+{
+  "name": "SADIGA - Sistem Administrasi Digital Granada",
+  "description": "Sistem Administrasi Digital Granada (SADIGA) - Presensi, Penilaian, Mutaba'ah Yaumiyah, Tahfizh, Piket Musyrif, Multiple Intelligences, dan Rapor Pondok terintegrasi Google Spreadsheet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
