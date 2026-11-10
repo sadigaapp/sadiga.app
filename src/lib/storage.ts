@@ -381,34 +381,45 @@ class StorageEngine {
     return (this.state.Pengampu || []).filter(p => p.username === username);
   }
 
-  // Authentication via Supabase / Local Fallback
+  // Authentication via Supabase / Local Fallback (Auto-Repair Hash)
   public async login(u: string, p: string): Promise<{ ok: boolean; msg?: string; token?: string; user?: UserSession }> {
     const un = String(u).trim();
+    const computedHash = hash(p);
     let userRow: any = null;
 
     try {
       const { data, error } = await supabase
         .from('pengguna')
         .select('*')
-        .eq('username', un)
+        .ilike('username', un)
         .maybeSingle();
 
       if (!error && data) {
         userRow = data;
       }
-    } catch {
-      // Fallback local jika Supabase belum terhubung
+    } catch (err) {
+      console.warn('Gagal koneksi login Supabase, fallback ke local:', err);
     }
 
+    // Fallback ke local state jika dari cloud tidak ditemukan
     if (!userRow) {
       userRow = (this.state.Pengguna || []).find(x => x.username.toLowerCase() === un.toLowerCase());
     }
 
-    if (!userRow || userRow.hash !== hash(p)) {
-      return { ok: false, msg: 'Username atau kata sandi salah.' };
+    // Jika user tidak ada sama sekali
+    if (!userRow) {
+      return { ok: false, msg: 'Username tidak ditemukan.' };
     }
 
-    const peranList = String(userRow.peran || userRow.role)
+    // Verifikasi hash (toleran terhadap perbedaan huruf besar/kecil)
+    const storedHash = String(userRow.hash || '').toLowerCase();
+    const isPasswordValid = storedHash === computedHash.toLowerCase();
+
+    if (!isPasswordValid) {
+      return { ok: false, msg: 'Kata sandi salah.' };
+    }
+
+    const peranList = String(userRow.peran || userRow.role || 'guru')
       .split(',')
       .map(x => x.trim())
       .filter(Boolean);
@@ -421,7 +432,7 @@ class StorageEngine {
 
     const user: UserSession = {
       username: userRow.username,
-      nama: userRow.nama,
+      nama: userRow.nama || userRow.username,
       role,
       peran: peranList,
       siswa: userRow.siswa || '',
@@ -433,7 +444,6 @@ class StorageEngine {
     this.setSession(user);
     return { ok: true, token, user };
   }
-
   // Core API router
   public async api(action: string, sheetName: string, data?: any): Promise<any> {
     const user = this.getSession();
