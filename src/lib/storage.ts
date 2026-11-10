@@ -178,31 +178,4 @@ function getInitialDb(): DatabaseState {
   ];
 
   const mutabaah = [
-    { id: 'mt1', tanggal: '2026-11-08', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', selesai: 'm01,m03,m04,m05,m07,m08,m09,m10,m11,m12,m13,m14,m15,m16,m17', oleh: 'musyrif.zaid' },
-    { id: 'mt2', tanggal: '2026-11-07', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', selesai: 'm03,m04,m05,m08,m09,m11,m14,m15,m17', oleh: 'musyrif.zaid' },
-    { id: 'mt3', tanggal: '2026-11-08', kelas: '7A Putra', siswa: 'Ahmad Rayyan Al-Ghifari', selesai: 'm03,m04,m05,m09,m11,m14,m15', oleh: 'musyrif.zaid' }
-  ];
-
-  const setoran = [
-    { id: 'st1', tanggal: '2026-11-08', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', jenis: 'Ziyadah', surat: 'An-Naba', dari: '1', sampai: '20', materi: '', kualitas: 'Mutqin', catatan: 'Makharijul huruf sangat baik', oleh: 'ustadz.ahmad' },
-    { id: 'st2', tanggal: '2026-11-06', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', jenis: 'Murojaah', surat: 'An-Nazi\'at', dari: '1', sampai: '46', materi: '', kualitas: 'Lancar', catatan: 'Lancar, perhatikan dengung', oleh: 'ustadz.ahmad' },
-    { id: 'st3', tanggal: '2026-11-05', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', jenis: 'Tahsin', surat: '', dari: '', sampai: '', materi: 'Jilid 4 hal 15', kualitas: 'Lancar', catatan: 'Mad thabi\'i konsisten', oleh: 'ustadz.ahmad' }
-  ];
-
-  const perilaku = [
-    { id: 'pr1', tanggal: '2026-11-04', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', jenis: 'Positif', aspek: 'Akhlak', kejadian: 'Membantu merapikan sajadah masjid dan mengimami shalat sunnah', poin: '10', tindak_lanjut: 'Diberikan apresiasi di halaqah', oleh: 'musyrif.zaid' },
-    { id: 'pr2', tanggal: '2026-11-06', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', jenis: 'Positif', aspek: 'Disiplin', kejadian: 'Hadir halaqah paling awal dan membantu memimpin tilawah', poin: '5', tindak_lanjut: 'Pertahankan keteladanan', oleh: 'ustadz.ahmad' }
-  ];
-
-  const penilaian = [
-    { id: 'pn1', tanggal: '2026-10-15', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Pendidikan Agama Islam', jenis: 'Tugas Harian', nilai: '92', catatan: 'Sangat rapi dan lengkap', oleh: 'ustadz.ahmad', tp: 'tp1' },
-    { id: 'pn2', tanggal: '2026-10-22', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Pendidikan Agama Islam', jenis: 'Ulangan Harian', nilai: '88', catatan: 'Pemahaman konsep bagus', oleh: 'ustadz.ahmad', tp: 'tp2' },
-    { id: 'pn3', tanggal: '2026-10-30', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Pendidikan Agama Islam', jenis: 'UTS', nilai: '90', catatan: '', oleh: 'ustadz.ahmad', tp: 'tp1' },
-    { id: 'pn4', tanggal: '2026-10-15', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Bahasa Arab', jenis: 'Hifdz Mufradat', nilai: '95', catatan: 'Hafalan kosa kata mutqin', oleh: 'ustadz.ahmad', tp: 'tp3' },
-    { id: 'pn5', tanggal: '2026-10-28', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Bahasa Arab', jenis: 'Ujian Lisan', nilai: '90', catatan: 'Fasih bertutur bahasa Arab', oleh: 'ustadz.ahmad', tp: 'tp3' },
-    { id: 'pn6', tanggal: '2026-10-15', kelas: '7A Putra', siswa: 'Ahmad Rayyan Al-Ghifari', mapel: 'Pendidikan Agama Islam', jenis: 'Tugas Harian', nilai: '84', catatan: '', oleh: 'ustadz.ahmad', tp: 'tp1' }
-  ];
-
-  const presensi = [
-    { id: 'ps1', tanggal: '2026-10-15', kelas: '7A Putra', siswa: 'Muhammad Fatih Robbani', mapel: 'Pendidikan Agama Islam', status: 'Hadir', catatan: '', oleh: 'ustadz.ahmad' },
-    { id: 'ps2', tanggal: '2026-10-22', kelas: '7A Putra', siswa:
+    { id: 'mt1', tanggal: '2026-11-08', kelas: '7A Putra
