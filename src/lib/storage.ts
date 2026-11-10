@@ -20,6 +20,7 @@ import {
 
 export const SALT = 'SADIGA';
 
+
 // Helper to hash passwords consistently in JS
 export function hash(pwd: string): string {
   let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
@@ -47,6 +48,22 @@ export function sandiAcak(): string {
 
 export function getUuid(): string {
   return 'u_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+}
+
+// Helper untuk mengubah nama modul aplikasi ke nama tabel Supabase (snake_case)
+function getTableName(sheetName: string): string {
+  const map: Record<string, string> = {
+    ItemMutabaah: 'item_mutabaah',
+    JenisNilai: 'jenis_nilai',
+    KegiatanPiket: 'kegiatan_piket',
+    NilaiPondok: 'nilai_pondok',
+    PetaMI: 'peta_mi',
+    PiketAbsen: 'piket_absen',
+    SoalMI: 'soal_mi',
+    KuesionerMI: 'kuesioner_mi',
+    RaporAkademikManual: 'rapor_akademik_manual'
+  };
+  return map[sheetName] || sheetName.toLowerCase();
 }
 
 const STORAGE_KEY = 'sadiga_db_v1';
