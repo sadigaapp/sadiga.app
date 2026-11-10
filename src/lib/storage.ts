@@ -20,7 +20,6 @@ import {
 
 export const SALT = 'SADIGA';
 
-
 // Helper to hash passwords consistently in JS
 export function hash(pwd: string): string {
   let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
@@ -487,8 +486,8 @@ class StorageEngine {
   public list(sheetName: string): any[] {
     const list = this.state[sheetName as keyof DatabaseState] || [];
     
-    // Background fetch dari Supabase
-    const tableName = sheetName.toLowerCase();
+    // Background fetch dari Supabase menggunakan getTableName
+    const tableName = getTableName(sheetName);
     supabase.from(tableName).select('*').then(({ data, error }) => {
       if (!error && data && data.length > 0) {
         (this.state as any)[sheetName] = data;
@@ -560,7 +559,7 @@ class StorageEngine {
     this.saveLocal();
 
     try {
-      const tableName = sheetName.toLowerCase();
+      const tableName = getTableName(sheetName);
       await supabase.from(tableName).upsert([d], { onConflict: 'id' });
     } catch (err) {
       console.warn('Gagal sync ke cloud:', err);
@@ -583,7 +582,7 @@ class StorageEngine {
     this.saveLocal();
 
     try {
-      const tableName = sheetName.toLowerCase();
+      const tableName = getTableName(sheetName);
       await supabase.from(tableName).upsert(items, { onConflict: 'id' });
     } catch (err) {
       console.warn('Gagal sync batch ke cloud:', err);
@@ -607,7 +606,7 @@ class StorageEngine {
     this.saveLocal();
 
     try {
-      const tableName = sheetName.toLowerCase();
+      const tableName = getTableName(sheetName);
       await supabase.from(tableName).delete().eq('id', d.id);
     } catch (err) {
       console.warn('Gagal hapus di cloud:', err);
