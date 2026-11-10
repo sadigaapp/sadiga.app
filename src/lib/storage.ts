@@ -1,3 +1,4 @@
+import { supabase } from './supabase';
 import {
   DEF_SETTINGS,
   ITEM_AWAL,
