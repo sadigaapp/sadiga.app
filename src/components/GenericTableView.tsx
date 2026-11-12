@@ -259,6 +259,12 @@ const kelasList = [...new Set([...kelasListFromMaster, ...kelasListFromSiswa])].
     if (hasKelas && fKelas) initial.kelas = fKelas;
     if (hasMapel && fMapel) initial.mapel = fMapel;
     if (hasSiswa && fSiswa) initial.siswa = fSiswa;
+    // Dropdown tanpa opsi kosong: isi nilai awal agar sama dengan yang tampil di layar
+    if (mod === 'Mapel') initial.kelompok = KEL[0];
+    if (mod === 'ItemMutabaah') initial.kelompok = MUTK[0];
+    if (mod === 'Presensi') initial.status = ST[0];
+    if (mod === 'Perilaku') { initial.aspek = ASPEK[0]; initial.jenis = 'Positif'; }
+    if (mod === 'NilaiPondok') { initial.predikat = PRD[0]; initial.kategori = KAT_PONDOK[0]; }
     setFormData(initial);
     setFormError('');
     setIsModalOpen(true);
